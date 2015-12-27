@@ -56,7 +56,7 @@ void setup()
 {
   // We'll set up the LED pin to be an output.
   // (We don't need to do anything special to use the analog input.)
-  
+  Serial.begin(9600);
   pinMode(ledPin, OUTPUT);
 }
 
@@ -112,7 +112,7 @@ void loop()
   // The above functions will alter lightLevel to be cover the
   // range from full-on to full-off. Now we can adjust the
   // brightness of the LED:
-
+  //Serial.println(lightLevel);
   analogWrite(ledPin, lightLevel);
   
   // The above statement will brighten the LED along with the
@@ -138,8 +138,7 @@ void manualTune()
   // is always too bright, make the high number smaller.
 
   // Remember you're JUST changing the 0, 1023 in the line below!
-
-  lightLevel = map(lightLevel, 0, 1023, 0, 255);
+  lightLevel = map(lightLevel, 150, 550, 255, 0);
   lightLevel = constrain(lightLevel, 0, 255);
 
   // Now we'll return to the main loop(), and send lightLevel
